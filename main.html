@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Chatroom</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+        #chatbox {
+            height: 300px;
+            overflow-y: scroll;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .message {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+        .message .pfp {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .message .content {
+            background-color: #f2f2f2;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        .message .content p {
+            margin: 0;
+        }
+        #message {
+            width: calc(100% - 120px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+        #sendBtn {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .typing-animation {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: #007bff;
+            margin-right: 5px;
+            animation: typing 1s infinite;
+        }
+        @keyframes typing {
+            0% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Online Chatroom</h2>
+        <div id="chatbox"></div>
+        <input type="text" id="message" placeholder="Type your message here...">
+        <button id="sendBtn">Send</button>
+    </div>
+
+    <script>
+        // Function to open chatroom in a new tab and redirect to a new link
+        function openChatroomAndRedirect() {
+            // Open chatroom in a new tab
+            var chatroomWindow = window.open("", "_blank");
+            
+            // Define the URL to redirect to
+            var redirectUrl = "https://example.com"; // Change this to the desired URL
+            
+            // Redirect to the new URL after a delay
+            setTimeout(function() {
+                chatroomWindow.location.href = redirectUrl;
+            }, 1000); // Change the delay time if needed (in milliseconds)
+        }
+        
+        // Function to simulate typing animation and send "Hello" message after 5 seconds
+        function simulateTyping() {
+            var chatbox = document.getElementById("chatbox");
+            var typingIndicator = document.createElement("span");
+            typingIndicator.textContent = "Typing";
+            typingIndicator.classList.add("typing-animation");
+            chatbox.appendChild(typingIndicator);
+            setTimeout(function() {
+                typingIndicator.remove();
+                var messageElement = document.createElement("div");
+                messageElement.classList.add("message");
+                
+                var pfp = document.createElement("img");
+                pfp.src = "pfp_receiver.jpg"; // Change to the path of the receiver's profile picture
+                pfp.classList.add("pfp");
+                messageElement.appendChild(pfp);
+
+                var content = document.createElement("div");
+                content.classList.add("content");
+                content.innerHTML = "<p>Hello</p>"; // Change the message content here
+                messageElement.appendChild(content);
+
+                chatbox.appendChild(messageElement);
+                // Scroll to bottom of chatbox
+                chatbox.scrollTop = chatbox.scrollHeight;
+            }, 5000); // Show "Hello" message after 5 seconds
+        }
+
+        // Function to send message
+        function sendMessage() {
+            var messageInput = document.getElementById("message");
+            var message = messageInput.value;
+            if (message.trim() !== "") {
+                var chatbox = document.getElementById("chatbox");
+                var messageElement = document.createElement("div");
+                messageElement.classList.add("message");
+                
+                var pfp = document.createElement("img");
+                pfp.src = "pfp_sender.jpg"; // Change to the path of the sender's profile picture
+                pfp.classList.add("pfp");
+                messageElement.appendChild(pfp);
+
+                var content = document.createElement("div");
+                content.classList.add("content");
+                content.innerHTML = "<p>" + message + "</p>";
+                messageElement.appendChild(content);
+
+                chatbox.appendChild(messageElement);
+                // Scroll to bottom of chatbox
+                chatbox.scrollTop = chatbox.scrollHeight;
+                // Clear input
+                messageInput.value = "";
+                // Simulate typing animation and send "Hello" message after 5 seconds
+                simulateTyping();
+            }
+        }
+
+        // Event listener for send button click
+        document.getElementById("sendBtn").addEventListener("click", function() {
+            sendMessage();
+        });
+
+        // Event listener for enter key press
+        document.getElementById("message").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                sendMessage();
+            }
+        });
+
+        // Call the function when the page is loaded
+        openChatroomAndRedirect();
+    </script>
+</body>
+</html>
