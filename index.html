@@ -91,21 +91,34 @@
     </div>
 
     <script>
-        // Function to open chatroom in a new tab and redirect to a new link
-        function openChatroomAndRedirect() {
-            // Open chatroom in a new tab
-            var chatroomWindow = window.open("", "_blank");
-            
-            // Define the URL to redirect to
-            var redirectUrl = "https://example.com"; // Change this to the desired URL
-            
-            // Redirect to the new URL after a delay
-            setTimeout(function() {
-                chatroomWindow.location.href = redirectUrl;
-            }, 1000); // Change the delay time if needed (in milliseconds)
+        // Function to generate a generic simple reply based on user input
+        function generateReply(message) {
+            var replies = [
+                "I'm sorry, I didn't understand that.",
+                "Could you please elaborate?",
+                "Interesting. Tell me more.",
+                "That's a good point.",
+                "I appreciate your input.",
+                "Thanks for sharing.",
+                "I'll look into that.",
+                "Let's change the topic.",
+                "How about we discuss something else?",
+                "That's intriguing.",
+                "I'm not sure I follow.",
+                "Can you clarify?",
+                "What are your thoughts on this?",
+                "Let's explore that further.",
+                "Hmm, let me think about it.",
+                "That's quite insightful."
+            ];
+
+            // Select a random reply from the array
+            var randomIndex = Math.floor(Math.random() * replies.length);
+            var reply = replies[randomIndex];
+            return reply;
         }
-        
-        // Function to simulate typing animation and send "Hello" message after 5 seconds
+
+        // Function to simulate typing animation and send a reply after 2 seconds
         function simulateTyping() {
             var chatbox = document.getElementById("chatbox");
             var typingIndicator = document.createElement("span");
@@ -124,17 +137,18 @@
 
                 var content = document.createElement("div");
                 content.classList.add("content");
-                content.innerHTML = "<p>Hello</p>"; // Change the message content here
+                var reply = generateReply(""); // Generate a random reply
+                content.innerHTML = "<p>" + reply + "</p>";
                 messageElement.appendChild(content);
 
                 chatbox.appendChild(messageElement);
                 // Scroll to bottom of chatbox
                 chatbox.scrollTop = chatbox.scrollHeight;
-            }, 5000); // Show "Hello" message after 5 seconds
+            }, 2000); // Show reply after 2 seconds
         }
 
-        // Function to send message
-        function sendMessage() {
+        // Function to handle user input and generate replies
+        function handleUserInput() {
             var messageInput = document.getElementById("message");
             var message = messageInput.value;
             if (message.trim() !== "") {
@@ -157,25 +171,24 @@
                 chatbox.scrollTop = chatbox.scrollHeight;
                 // Clear input
                 messageInput.value = "";
-                // Simulate typing animation and send "Hello" message after 5 seconds
-                simulateTyping();
+                // Simulate typing animation and send reply after 2 seconds
+                setTimeout(function() {
+                    simulateTyping();
+                }, 2000);
             }
         }
 
         // Event listener for send button click
         document.getElementById("sendBtn").addEventListener("click", function() {
-            sendMessage();
+            handleUserInput();
         });
 
         // Event listener for enter key press
         document.getElementById("message").addEventListener("keypress", function(event) {
             if (event.key === "Enter") {
-                sendMessage();
+                handleUserInput();
             }
         });
-
-        // Call the function when the page is loaded
-        openChatroomAndRedirect();
     </script>
 </body>
 </html>
