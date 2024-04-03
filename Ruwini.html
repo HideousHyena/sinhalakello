@@ -3,30 +3,43 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Image Showcase</title>
+<title>Blur Effect Demo</title>
 <style>
-  .image-container {
-    text-align: center; /* Centers the content */
-    margin: 20px; /* Adds margin around the container */
-  }
   .image-container img {
-    width: 50%; /* Adjusts the width of the image to 50% of its container */
-    height: auto; /* Keeps the aspect ratio of the image */
-    border-radius: 10px; /* Optional: Adds rounded corners to the image */
+    display: block;
+    width: 100%; /* Adjust as needed */
+    max-width: 600px; /* Adjust as needed */
+    margin: 0 auto 20px; /* Center the image and add space below */
   }
-  .caption {
-    color: #555; /* Sets the color of the caption text */
-    font-size: 1em; /* Sets the size of the font */
-    margin-top: 10px; /* Adds margin above the caption */
+
+  .blur-effect {
+    filter: blur(5px); /* Initial blur effect */
+    transition: filter 0.3s ease; /* Smooth transition for the blur effect */
+  }
+
+  .text-box {
+    border: 2px solid #000;
+    padding: 20px;
+    margin: 20px auto; /* Center the box */
+    width: 90%;
+    max-width: 600px; /* Adjust as needed */
+    text-align: center;
+  }
+
+  button {
+    display: block;
+    margin: 20px auto; /* Center the button */
   }
 </style>
-  <script type='text/javascript' src='//pl22712608.profitablegatecpm.com/dd/aa/bc/ddaabca1b5e943f4484c76be0208e417.js'></script>
 </head>
 <body>
 
 <div class="image-container">
-  <img src="img5.jpeg" alt="Description of the image">
-  <p class="caption">මම රුවිනි.
+  <img src="img5.jpeg" alt="Ruwini">
+</div>
+
+<div class="text-box blur-effect" id="textBox">
+මම රුවිනි.
 යාළුවො නම් කතා කරන්නෙ රුවී කියල. මං රුං අවුරුදු තිස් පහක කසාද බැදපු ලොකු ගෑනියෙක්. මට චූටි දුවෙකුත් ඉන්නව. මං ගොඩක් ලස්සන පවුල් ජීවිතයක් ගත කරනව. ඒ ගොඩක් thay තෘප්තිමත් ලිංගික ජීවිතේකුන් එක්කම. මං ගොඩක් ෆෝවර්ඩ් කෙනෙක්.
 මං මගෙ හස්බන්ඩ් ඇරුනම තවත් පිරිමින් එක්ක සෙක්ස් කරනව. එයත් වෙන අය එක්ක සෙක්ස් කරනව. අපි දෙන්නම දැනුවත්ව. ඒ ගැන මං පස්සෙ කියන්නං.
 මං මේ කියන්න යන්නෙ අද ගතකරන ජීවිතේ ගැන නෙවෙයි. මීට ගොඩක් කලිං හස්බන්ඩ්රි
@@ -609,8 +622,16 @@ ________________________________________________________________________________
 ම්ම්……ආ ආ ආආආආ. අතොරක් නැතිව කෙදිරි
 ගගා ඒ පහසට මං අවනත වුණා. ඕඕහ්
 ආආආ………බී මට යනවා… ආආආආ එයා කැරි ගොඩක් මගෙ පස්ස ඇතුළටම යැව්ව. ඇද උඩ හිටිය මගෙ පස්ස දාරෙ දිග බේරිච්ච කැරි ඇද තෙත් කරනව නංගියගෙ අස්සට ඇගිල්ල දාගන්න ගමන් ඇදටයි මගෙ ඇගටයි අස්සෙන් මට පෙණුන. හශී එහෙමම පහළය ඇවිත් මගෙ ඇගිල්ල අයින් කරල නංගි බබාට ඇගිල්ල දාල කලන්නද්දිම ඇගත් පණ නැති කරන් මට සුරාන්තය ලැබුව.
-එහෙමම මං පණ නැතුව පහළට වැටිල ටිකක් වෙලා ඉදල නැගිට්ටා. හශී තාමත් ඇදලග හිටන් මගෙ දිහා බලන් ඉන්නව. අහ්ර් මගෙ පස්ස පුරා ලොකු දැවිල්ලක්.. මං බාරූම් එකට යන්න ගත්තම ඇවිදින්නත් අමාරුයි. පස්ස ඇදුම් කන්න වුනා. මේක දැකල හශී හිනාවෙන්න ගත්තම මට එක සැරේ තරහත් ගියා.යනව යන්න කරන්න ඕනෙ හරිය ඔක්කොම කරල දැන් මෙතන හිනාවෙනව.නපුරුයි කතා කරන්න එපා මට මටනෙ අමාරුව. එහෙම කියල මම අමාරුවෙන්ම බාක්රූම් යන්න හැරෙද්දි හශී ඇවිල්ල මාව හරහට උස්සල එයාගෙ අත්දෙකට ගත්ත.</p>
+එහෙමම මං පණ නැතුව පහළට වැටිල ටිකක් වෙලා ඉදල නැගිට්ටා. හශී තාමත් ඇදලග හිටන් මගෙ දිහා බලන් ඉන්නව. අහ්ර් මගෙ පස්ස පුරා ලොකු දැවිල්ලක්.. මං බාරූම් එකට යන්න ගත්තම ඇවිදින්නත් අමාරුයි. පස්ස ඇදුම් කන්න වුනා. මේක දැකල හශී හිනාවෙන්න ගත්තම මට එක සැරේ තරහත් ගියා.යනව යන්න කරන්න ඕනෙ හරිය ඔක්කොම කරල දැන් මෙතන හිනාවෙනව.නපුරුයි කතා කරන්න එපා මට මටනෙ අමාරුව. එහෙම කියල මම අමාරුවෙන්ම බාක්රූම් යන්න හැරෙද්දි හශී ඇවිල්ල මාව හරහට උස්සල එයාගෙ අත්දෙකට ගත්ත.
 </div>
-<script type='text/javascript' src='//pl22712534.profitablegatecpm.com/04/f3/28/04f328a92a538e0f180e11566b5721c0.js'></script>
+
+<button onclick="removeBlur()">Unblur Text</button>
+
+<script>
+function removeBlur() {
+  document.getElementById('textBox').style.filter = 'none';
+}
+</script>
+
 </body>
 </html>
