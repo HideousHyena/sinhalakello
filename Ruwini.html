@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ruwini</title>
+<title>Interactive Image and Text Blur</title>
 <style>
   .container {
     position: relative;
@@ -18,13 +18,23 @@
     display: block; /* Ensures the image does not have extra space below it */
   }
 
-  .text-box {
+  .blur-effect {
     filter: blur(5px); /* Initial blur effect */
     padding: 20px;
-    height: 100px; /* Adjust based on content */
-    background-color: #f0f0f0; /* Gives the text box a distinct background */
+    background-color: #f0f0f0; /* Gives the blurred area a distinct background */
     transition: filter 0.3s ease; /* Smooth transition for the blur effect */
-    position: relative; /* Needed to position the button */
+  }
+
+  .text-box-container {
+    position: relative; /* Ensures the overlay button can be positioned correctly */
+    padding: 20px;
+    background-color: #f0f0f0; /* Matches the blur-effect background */
+  }
+
+  .text-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px; /* Provides space between the input and the button */
   }
 
   .overlay-button {
@@ -34,6 +44,7 @@
     transform: translate(-50%, -50%); /* Center the button */
     padding: 10px 20px;
     cursor: pointer;
+    z-index: 10; /* Ensures the button is above the blurred content */
   }
 </style>
 </head>
@@ -41,10 +52,11 @@
 
 <div class="container">
   <div class="image-banner">
-    <img src="img5.jpeg" alt="Ruwini">
+    <img src=img5.jpeg" alt="A beautiful scenery">
   </div>
-  <div class="text-box" id="textBox">
-මම රුවිනි.
+  <div class="blur-effect" id="blurEffect">
+    <div class="text-box-container">
+      <input type="text" class="text-input" value="මම රුවිනි.
 යාළුවො නම් කතා කරන්නෙ රුවී කියල. මං රුං අවුරුදු තිස් පහක කසාද බැදපු ලොකු ගෑනියෙක්. මට චූටි දුවෙකුත් ඉන්නව. මං ගොඩක් ලස්සන පවුල් ජීවිතයක් ගත කරනව. ඒ ගොඩක් thay තෘප්තිමත් ලිංගික ජීවිතේකුන් එක්කම. මං ගොඩක් ෆෝවර්ඩ් කෙනෙක්.
 මං මගෙ හස්බන්ඩ් ඇරුනම තවත් පිරිමින් එක්ක සෙක්ස් කරනව. එයත් වෙන අය එක්ක සෙක්ස් කරනව. අපි දෙන්නම දැනුවත්ව. ඒ ගැන මං පස්සෙ කියන්නං.
 මං මේ කියන්න යන්නෙ අද ගතකරන ජීවිතේ ගැන නෙවෙයි. මීට ගොඩක් කලිං හස්බන්ඩ්රි
@@ -627,8 +639,9 @@ ________________________________________________________________________________
 ම්ම්……ආ ආ ආආආආ. අතොරක් නැතිව කෙදිරි
 ගගා ඒ පහසට මං අවනත වුණා. ඕඕහ්
 ආආආ………බී මට යනවා… ආආආආ එයා කැරි ගොඩක් මගෙ පස්ස ඇතුළටම යැව්ව. ඇද උඩ හිටිය මගෙ පස්ස දාරෙ දිග බේරිච්ච කැරි ඇද තෙත් කරනව නංගියගෙ අස්සට ඇගිල්ල දාගන්න ගමන් ඇදටයි මගෙ ඇගටයි අස්සෙන් මට පෙණුන. හශී එහෙමම පහළය ඇවිත් මගෙ ඇගිල්ල අයින් කරල නංගි බබාට ඇගිල්ල දාල කලන්නද්දිම ඇගත් පණ නැති කරන් මට සුරාන්තය ලැබුව.
-එහෙමම මං පණ නැතුව පහළට වැටිල ටිකක් වෙලා ඉදල නැගිට්ටා. හශී තාමත් ඇදලග හිටන් මගෙ දිහා බලන් ඉන්නව. අහ්ර් මගෙ පස්ස පුරා ලොකු දැවිල්ලක්.. මං බාරූම් එකට යන්න ගත්තම ඇවිදින්නත් අමාරුයි. පස්ස ඇදුම් කන්න වුනා. මේක දැකල හශී හිනාවෙන්න ගත්තම මට එක සැරේ තරහත් ගියා.යනව යන්න කරන්න ඕනෙ හරිය ඔක්කොම කරල දැන් මෙතන හිනාවෙනව.නපුරුයි කතා කරන්න එපා මට මටනෙ අමාරුව. එහෙම කියල මම අමාරුවෙන්ම බාක්රූම් යන්න හැරෙද්දි හශී ඇවිල්ල මාව හරහට උස්සල එයාගෙ අත්දෙකට ගත්ත.
-    <button class="overlay-button" onclick="handleClick()" id="actionButton">සම්පූර්ණ කතාව මෙතනින්</button>
+එහෙමම මං පණ නැතුව පහළට වැටිල ටිකක් වෙලා ඉදල නැගිට්ටා. හශී තාමත් ඇදලග හිටන් මගෙ දිහා බලන් ඉන්නව. අහ්ර් මගෙ පස්ස පුරා ලොකු දැවිල්ලක්.. මං බාරූම් එකට යන්න ගත්තම ඇවිදින්නත් අමාරුයි. පස්ස ඇදුම් කන්න වුනා. මේක දැකල හශී හිනාවෙන්න ගත්තම මට එක සැරේ තරහත් ගියා.යනව යන්න කරන්න ඕනෙ හරිය ඔක්කොම කරල දැන් මෙතන හිනාවෙනව.නපුරුයි කතා කරන්න එපා මට මටනෙ අමාරුව. එහෙම කියල මම අමාරුවෙන්ම බාක්රූම් යන්න හැරෙද්දි හශී ඇවිල්ල මාව හරහට උස්සල එයාගෙ අත්දෙකට ගත්ත." readonly>
+      <button class="overlay-button" onclick="handleClick()" id="actionButton">Click Me</button>
+    </div>
   </div>
 </div>
 
@@ -640,10 +653,10 @@ function handleClick() {
   
   if (clickCount === 1) {
     // Redirect to a website on the first click
-    window.open('https://www.profitablegatecpm.com/danzsjh8f?key=09e0e2071473f794adf86a79d90cf34f', '_blank');
+    window.open('http://example.com', '_blank');
   } else if (clickCount === 2) {
     // Remove the blur effect on the second click
-    document.getElementById('textBox').style.filter = 'none';
+    document.getElementById('blurEffect').style.filter = 'none';
   }
 }
 </script>
