@@ -16,15 +16,16 @@
         <div id="chat-box" class="bg-white p-4 rounded-lg shadow-md flex-1 overflow-y-auto mt-4">
             <!-- Messages will appear here -->
         </div>
-        <div id="typing-indicator" class="hidden bg-gray-100 p-2 rounded-lg shadow-md">
-            <div class="animate-pulse flex space-x-4">
+        <div id="typing-indicator" class="hidden flex items-center">
+            <div class="animate-pulse mr-2">
                 <div class="rounded-full bg-gray-300 h-4 w-4"></div>
                 <div class="rounded-full bg-gray-300 h-4 w-4"></div>
                 <div class="rounded-full bg-gray-300 h-4 w-4"></div>
             </div>
+            <p class="text-gray-500">Typing...</p>
         </div>
         <div class="mt-4 flex items-center">
-            <input id="chat-input" type="text" class="flex-1 p-2 border border-gray-300 rounded-lg" placeholder="Type a message">
+            <input id="chat-input" type="text" class="flex-1 p-2 border border-gray-300 rounded-lg" placeholder="Type a message" onkeypress="handleKeyPress(event)">
             <button onclick="sendMessage()" class="ml-2 p-2 bg-blue-500 text-white rounded-lg">Send</button>
         </div>
     </div>

@@ -16,16 +16,21 @@ const responses = [
 function selectPerson(name, image) {
     selectedPerson = { name, image };
     localStorage.setItem('selectedPerson', JSON.stringify(selectedPerson));
+    updateChatHeader();
     window.location.href = 'chat.html';
+}
+
+function updateChatHeader() {
+    if (selectedPerson) {
+        document.getElementById('chat-name').innerText = selectedPerson.name;
+        document.getElementById('chat-dp').src = selectedPerson.image;
+    }
 }
 
 window.onload = function() {
     if (window.location.pathname.endsWith('chat.html')) {
         selectedPerson = JSON.parse(localStorage.getItem('selectedPerson'));
-        if (selectedPerson) {
-            document.getElementById('chat-name').innerText = selectedPerson.name;
-            document.getElementById('chat-dp').src = selectedPerson.image;
-        }
+        updateChatHeader();
     }
 }
 
@@ -79,6 +84,12 @@ function hideTypingIndicator() {
     document.getElementById('typing-indicator').classList.add('hidden');
 }
 
+function handleKeyPress(event) {
+    if (event.key === 'Enter') {
+        sendMessage();
+    }
+}
+
 function showSubscriptionPrompt() {
     const chatBox = document.getElementById('chat-box');
     const promptElement = document.createElement('div');
@@ -114,8 +125,20 @@ function saveCardDetails() {
     if (cardNumber && expiryDate && cvv) {
         const cardDetails = { cardNumber, expiryDate, cvv };
         localStorage.setItem('cardDetails', JSON.stringify(cardDetails));
-        alert('Card details saved successfully!');
+        alert('Dummy card details saved locally.');
     } else {
         alert('Please fill in all the details.');
     }
 }
+
+function displaySavedCardDetails() {
+    const savedCardDetails = localStorage.getItem('cardDetails');
+    if (savedCardDetails) {
+        const cardDetails = JSON.parse(savedCardDetails);
+        // Display or use card details as needed in your application
+        console.log(cardDetails); // Example: Log to console
+    } else {
+        console.log('No card details saved.');
+    }
+}
+

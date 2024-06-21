@@ -35,7 +35,17 @@ body {
 }
 
 #typing-indicator {
-    animation: fadeIn 0.5s ease-in-out;
+    margin-top: -24px; /* Adjust this value as needed */
+    padding: 8px;
+    background-color: #f3f4f6;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#typing-indicator p {
+    margin-left: 8px;
+    font-size: 14px;
+    color: #6b7280;
 }
 
 @keyframes fadeIn {
