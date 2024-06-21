@@ -4,22 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat Landing Page</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles/styles.css">
 </head>
-<body class="bg-gray-100 flex items-center justify-center h-screen">
-    <div class="text-center">
-        <h1 class="text-4xl font-bold mb-8">Welcome to Chat App</h1>
-        <div>
-            <button onclick="startChat('John')" class="bg-blue-500 text-white px-4 py-2 rounded-full">Chat with John</button>
-            <button onclick="startChat('Jane')" class="bg-green-500 text-white px-4 py-2 rounded-full">Chat with Jane</button>
+<body class="bg-gray-100">
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-4xl font-bold mb-8 text-center">Select a person to chat with</h1>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            <!-- Repeat this block for each person -->
+            <div class="bg-white p-4 rounded-lg shadow-md hover:bg-gray-50 cursor-pointer" onclick="selectPerson('John Doe', 'images/john.jpg')">
+                <img src="images/hansi.jpeg" alt="Hansi Madu" class="w-full h-40 object-cover rounded-lg">
+                <h2 class="text-xl font-bold mt-4 text-center">Hansi Madumali</h2>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow-md hover:bg-gray-50 cursor-pointer" onclick="selectPerson('John Doe', 'images/john.jpg')">
+                <img src="images/sulakshi.png" alt="Sulakshi Sandeepani" class="w-full h-40 object-cover rounded-lg">
+                <h2 class="text-xl font-bold mt-4 text-center">Sulakshi Sandeepani</h2>
+            </div>
+            <!-- Repeat block ends -->
         </div>
     </div>
-
-    <script>
-        function startChat(name) {
-            window.location.href = `chat.html?name=${name}`;
-        }
-    </script>
 </body>
+<script src="scripts/main.js"></script>
 </html>
