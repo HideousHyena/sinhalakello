@@ -3,213 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sinhala Kello</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f2f2f2;
-        }
-        .container {
-            width: 80%;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin-top: 50px;
-        }
-        #chatbox {
-            height: 250px; /* Reduced height to accommodate buttons */
-            overflow-y: scroll;
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin-bottom: 20px;
-        }
-        .message {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 10px;
-        }
-        .message .pfp {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            margin-right: 10px;
-        }
-        .message .content {
-            background-color: #f2f2f2;
-            padding: 10px;
-            border-radius: 10px;
-        }
-        .message .content p {
-            margin: 0;
-        }
-        #message {
-            width: calc(100% - 120px);
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            margin-right: 10px;
-        }
-        #sendBtn {
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 10px; /* Added margin to separate from chatbox */
-        }
-        .typing-animation {
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            background-color: #007bff;
-            margin-right: 5px;
-            animation: typing 1s infinite;
-        }
-        @keyframes typing {
-            0% {
-                opacity: 0;
-            }
-            50% {
-                opacity: 1;
-            }
-            100% {
-                opacity: 0;
-            }
-        }
-        /* Style for the green buttons */
-        .green-btn {
-            padding: 10px 20px;
-            background-color: #28a745; /* Green color */
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 10px; /* Added margin to separate from each other and chatbox */
-            display: block; /* Display as block to stack vertically */
-            width: 100%; /* Make buttons take full width */
-        }
-    </style>
-<script type='text/javascript' src='//pl22712608.profitablegatecpm.com/dd/aa/bc/ddaabca1b5e943f4484c76be0208e417.js'></script>
+    <title>Chat Landing Page</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <div class="container">
-        <h2>Online Chatroom</h2>
-        <div id="chatbox"></div>
-        <input type="text" id="message" placeholder="Type your message here...">
-        <button id="sendBtn">Send</button>
-        <!-- Green buttons -->
-        <button class="green-btn" onclick="window.location.href='https://www.profitablegatecpm.com/sx4f3k8v1?key=4a1804eb596d5241cd707a1aa541a02a'">මෙතන ඔබන්න</button>
-        <button class="green-btn" onclick="window.location.href='https://www.profitablegatecpm.com/sx4f3k8v1?key=4a1804eb596d5241cd707a1aa541a02a'">මෙතන ඔබන්න</button>
-        <button class="green-btn" onclick="window.location.href='https://www.profitablegatecpm.com/sx4f3k8v1?key=4a1804eb596d5241cd707a1aa541a02a'">මෙතන ඔබන්න</button>
-        <button class="green-btn" onclick="window.location.href='page_2.html'">මෙතන ඔබන්න</button>
-        <button class="green-btn" onclick="window.location.href='https://www.profitablegatecpm.com/sx4f3k8v1?key=4a1804eb596d5241cd707a1aa541a02a'">මෙතන ඔබන්න</button>
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+    <div class="text-center">
+        <h1 class="text-4xl font-bold mb-8">Welcome to Chat App</h1>
+        <div>
+            <button onclick="startChat('John')" class="bg-blue-500 text-white px-4 py-2 rounded-full">Chat with John</button>
+            <button onclick="startChat('Jane')" class="bg-green-500 text-white px-4 py-2 rounded-full">Chat with Jane</button>
+        </div>
     </div>
 
     <script>
-        // Function to generate a generic simple reply based on user input
-        function generateReply(message) {
-            var replies = [
-                "අනේ මට තේරෙන්නෙ නෑනේ...",
-                "ඒ කිව්වෙ?",
-                "මං ආසයි ඔයා ගැන දැනගන්න...",
-                "ඔයා කතා කරන විදිය හරි හුරතල් අනේ",
-                "ම්ම්හ්​ම්",
-                "හ්ම්ම්ම්ම්​ම්",
-                "බලමුකො බලමු​කො",
-                "ම්ම්ම් ඉතිං ඉති​ං",
-                "අපි වෙන මොනා හරි කතා කරමුද?",
-                "කොහොමද ඉති​ං",
-                "බඩගිනියි අප්පා...",
-                "උම්මා එකක් දෙන්න​කො",
-                "මෙතන චැට් කරන්න බෑ ඔය පහළ තියෙන බට්න් එක ක්ලික් කරන්න​කො",
-                "ඔතන පහළ නිල් පාට බොත්තමක් ඇති ඒක ඔබන්න​කො",
-                "බඩ්ඩක් කියන්න තියේ...",
-                "ඔය බට්න් එක ඔබන්නකො නිල් පා​ට"
-            ];
-
-            // Select a random reply from the array
-            var randomIndex = Math.floor(Math.random() * replies.length);
-            var reply = replies[randomIndex];
-            return reply;
+        function startChat(name) {
+            window.location.href = `chat.html?name=${name}`;
         }
-
-        // Function to simulate typing animation and send a reply after 2 seconds
-        function simulateTyping() {
-            var chatbox = document.getElementById("chatbox");
-            var typingIndicator = document.createElement("span");
-            typingIndicator.textContent = "Typing";
-            typingIndicator.classList.add("typing-animation");
-            chatbox.appendChild(typingIndicator);
-            setTimeout(function() {
-                typingIndicator.remove();
-                var messageElement = document.createElement("div");
-                messageElement.classList.add("message");
-                
-                var pfp = document.createElement("img");
-                pfp.src = "receiver.png"; // Change to the path of the receiver's profile picture
-                pfp.classList.add("pfp");
-                messageElement.appendChild(pfp);
-
-                var content = document.createElement("div");
-                content.classList.add("content");
-                var reply = generateReply(""); // Generate a random reply
-                content.innerHTML = "<p>" + reply + "</p>";
-                messageElement.appendChild(content);
-
-                chatbox.appendChild(messageElement);
-                // Scroll to bottom of chatbox
-                chatbox.scrollTop = chatbox.scrollHeight;
-            }, 2000); // Show reply after 2 seconds
-        }
-
-        // Function to handle user input and generate replies
-        function handleUserInput() {
-            var messageInput = document.getElementById("message");
-            var message = messageInput.value;
-            if (message.trim() !== "") {
-                var chatbox = document.getElementById("chatbox");
-                var messageElement = document.createElement("div");
-                messageElement.classList.add("message");
-                
-                var pfp = document.createElement("img");
-                pfp.src = "sender.jpg"; // Change to the path of the sender's profile picture
-                pfp.classList.add("pfp");
-                messageElement.appendChild(pfp);
-
-                var content = document.createElement("div");
-                content.classList.add("content");
-                content.innerHTML = "<p>" + message + "</p>";
-                messageElement.appendChild(content);
-
-                chatbox.appendChild(messageElement);
-                // Scroll to bottom of chatbox
-                chatbox.scrollTop = chatbox.scrollHeight;
-                // Clear input
-                messageInput.value = "";
-                // Simulate typing animation and send reply after 2 seconds
-                setTimeout(function() {
-                    simulateTyping();
-                }, 2000);
-            }
-        }
-
-        // Event listener for send button click
-        document.getElementById("sendBtn").addEventListener("click", function() {
-            handleUserInput();
-        });
-
-        // Event listener for enter key press
-        document.getElementById("message").addEventListener("keypress", function(event) {
-            if (event.key === "Enter") {
-                handleUserInput();
-            }
-        });
     </script>
-<script type='text/javascript' src='//pl22712534.profitablegatecpm.com/04/f3/28/04f328a92a538e0f180e11566b5721c0.js'></script>
 </body>
 </html>
