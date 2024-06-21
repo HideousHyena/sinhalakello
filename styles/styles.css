@@ -1,0 +1,8 @@
+body {
+    background: url('../images/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.hover\:bg-gray-50:hover {
+    background-color: #f9fafb;
+}
