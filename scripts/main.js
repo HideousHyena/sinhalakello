@@ -43,26 +43,46 @@ function sendMessage() {
         return;
     }
 
+    showTypingIndicator();
+
     setTimeout(() => {
+        hideTypingIndicator();
         const randomResponse = responses[Math.floor(Math.random() * responses.length)];
         appendMessage(selectedPerson.name, randomResponse, false);
-    }, Math.random() * 4000 + 1000); // Typing animation delay between 1-5 seconds
+    }, Math.random() * 4000 + 1000); // Random delay between 1-5 seconds
 }
 
 function appendMessage(sender, message, isUser) {
     const chatBox = document.getElementById('chat-box');
     const messageElement = document.createElement('div');
-    messageElement.classList.add('my-2', 'p-2', 'rounded-lg', 'shadow-md');
-    messageElement.classList.add(isUser ? 'bg-blue-100' : 'bg-gray-100');
-    messageElement.innerText = `${sender}: ${message}`;
+    messageElement.classList.add('message', 'p-2', 'rounded-lg', 'shadow-md');
+    messageElement.classList.add(isUser ? 'user' : 'bot');
+    messageElement.innerText = message;
+
+    // Adjust bubble width based on message length
+    const messageLength = message.length;
+    if (messageLength < 10) {
+        messageElement.style.width = `${messageLength * 10 + 50}px`;
+    } else {
+        messageElement.style.width = 'auto';
+    }
+
     chatBox.appendChild(messageElement);
     chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+function showTypingIndicator() {
+    document.getElementById('typing-indicator').classList.remove('hidden');
+}
+
+function hideTypingIndicator() {
+    document.getElementById('typing-indicator').classList.add('hidden');
 }
 
 function showSubscriptionPrompt() {
     const chatBox = document.getElementById('chat-box');
     const promptElement = document.createElement('div');
-    promptElement.classList.add('my-2', 'p-4', 'rounded-lg', 'bg-yellow-100', 'shadow-md', 'text-center');
+    promptElement.classList.add('message', 'p-4', 'rounded-lg', 'bg-yellow-100', 'shadow-md', 'text-center');
     promptElement.innerHTML = `
         <p>To continue chatting, please subscribe!</p>
         <button onclick="showPaymentForm()" class="mt-2 p-2 bg-green-500 text-white rounded-lg">Subscribe Now</button>
@@ -74,7 +94,7 @@ function showSubscriptionPrompt() {
 function showPaymentForm() {
     const chatBox = document.getElementById('chat-box');
     const paymentForm = document.createElement('div');
-    paymentForm.classList.add('my-2', 'p-4', 'rounded-lg', 'bg-yellow-100', 'shadow-md', 'text-center');
+    paymentForm.classList.add('message', 'p-4', 'rounded-lg', 'bg-yellow-100', 'shadow-md', 'text-center');
     paymentForm.innerHTML = `
         <p>Enter your card details:</p>
         <input type="text" id="card-number" placeholder="Card Number" class="p-2 border border-gray-300 rounded-lg mb-2">

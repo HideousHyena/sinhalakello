@@ -6,3 +6,43 @@ body {
 .hover\:bg-gray-50:hover {
     background-color: #f9fafb;
 }
+
+.message {
+    max-width: 70%;
+}
+
+.message.user {
+    align-self: flex-end;
+    background-color: #4dc0b5;
+    color: white;
+}
+
+.message.user::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -10px;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 10px solid #4dc0b5;
+}
+
+.message.bot {
+    align-self: flex-start;
+    background-color: #e5e7eb;
+}
+
+#typing-indicator {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
