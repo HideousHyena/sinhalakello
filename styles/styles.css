@@ -3,12 +3,11 @@ body {
     background-size: cover;
 }
 
-.hover\:bg-gray-50:hover {
-    background-color: #f9fafb;
-}
-
 .message {
     max-width: 70%;
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
 }
 
 .message.user {
@@ -17,34 +16,23 @@ body {
     color: white;
 }
 
-.message.user::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -10px;
-    width: 0;
-    height: 0;
-    border-top: 10px solid transparent;
-    border-bottom: 10px solid transparent;
-    border-right: 10px solid #4dc0b5;
-}
-
 .message.bot {
     align-self: flex-start;
     background-color: #e5e7eb;
 }
 
 #typing-indicator {
-    margin-top: -24px; /* Adjust this value as needed */
-    padding: 8px;
+    padding: 0.5rem;
     background-color: #f3f4f6;
-    border-radius: 16px;
+    border-radius: 1rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
 }
 
 #typing-indicator p {
-    margin-left: 8px;
-    font-size: 14px;
+    margin-left: 0.5rem;
+    font-size: 0.875rem;
     color: #6b7280;
 }
 

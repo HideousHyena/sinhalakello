@@ -60,7 +60,7 @@ function sendMessage() {
 function appendMessage(sender, message, isUser) {
     const chatBox = document.getElementById('chat-box');
     const messageElement = document.createElement('div');
-    messageElement.classList.add('message', 'p-2', 'rounded-lg', 'shadow-md');
+    messageElement.classList.add('message', 'shadow-md');
     messageElement.classList.add(isUser ? 'user' : 'bot');
     messageElement.innerText = message;
 
