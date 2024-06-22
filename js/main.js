@@ -10,12 +10,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const images = {
         hansi: 'images/hansi.jpeg',
         sulakshi: 'images/sulakshi.jpg',
-        default: 'images/default.jpg'
+        dilrukshi: 'images/dilrukshi.jpg',
+        shiroma: 'images/shiroma.jpg'
     };
 
     const names = {
         hansi: 'Hansi',
         sulakshi: 'Sulakshi',
+        dilrukshi: 'Dilrukshi',
+        shiroma: 'Shiroma',
         default: 'Default'
     };
 
