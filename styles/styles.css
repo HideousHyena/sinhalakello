@@ -1,46 +1,19 @@
-body {
-    background: url('../images/background.jpg') no-repeat center center fixed;
-    background-size: cover;
+body.bg-emoji-pattern {
+    background: url('data:image/png;base64,...') repeat; /* Add your emoji background base64 encoded */
+    animation: slide 10s linear infinite;
 }
 
-.message {
-    max-width: 70%;
-    margin-bottom: 1rem;
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
+@keyframes slide {
+    0% { background-position: 0 0; }
+    100% { background-position: 100% 100%; }
 }
 
-.message.user {
-    align-self: flex-end;
-    background-color: #4dc0b5;
-    color: white;
+.person-card {
+    text-align: center;
+    margin: 10px;
+    transition: transform 0.2s;
 }
 
-.message.bot {
-    align-self: flex-start;
-    background-color: #e5e7eb;
-}
-
-#typing-indicator {
-    padding: 0.5rem;
-    background-color: #f3f4f6;
-    border-radius: 1rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    display: flex;
-    align-items: center;
-}
-
-#typing-indicator p {
-    margin-left: 0.5rem;
-    font-size: 0.875rem;
-    color: #6b7280;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+.person-card:hover {
+    transform: scale(1.1);
 }
