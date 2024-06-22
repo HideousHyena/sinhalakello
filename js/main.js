@@ -49,8 +49,8 @@ document.addEventListener('DOMContentLoaded', () => {
         chatInput.value = '';
         messageCount++;
 
-        if (messageCount >= 10) {
-            showSubscriptionPrompt();
+        if (messageCount % 5 === 0) {
+            redirectToURL('https://www.highrevenuenetwork.com/adgjr4xzu?key=06c94e063a3ea8840ab11db6a1ebe3c4');
         } else {
             showTypingAnimation().then(() => {
                 const randomReply = replies[Math.floor(Math.random() * replies.length)];
@@ -87,77 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    function showSubscriptionPrompt() {
-        const modal = document.createElement('div');
-        modal.classList.add('modal', 'open');
-        modal.innerHTML = `
-            <div class="modal-overlay"></div>
-            <div class="modal-container">
-                <div class="modal-header">
-                    <h2>Subscribe to Continue</h2>
-                    <span class="close">&times;</span>
-                </div>
-                <div class="modal-body">
-                    <p>You have reached the message limit. Please subscribe to continue chatting.</p>
-                    <input type="text" id="card-number" placeholder="Card Number">
-                    <input type="text" id="exp-date" placeholder="MM/YY">
-                    <input type="text" id="cvv" placeholder="CVV">
-                    <button id="subscribe-button">Subscribe</button>
-                </div>
-            </div>
-        `;
-        document.body.appendChild(modal);
-
-        document.getElementById('subscribe-button').addEventListener('click', () => {
-            const cardNumber = document.getElementById('card-number').value.trim();
-            const expDate = document.getElementById('exp-date').value.trim();
-            const cvv = document.getElementById('cvv').value.trim();
-
-            if (validateCardDetails(cardNumber, expDate, cvv)) {
-                saveCardDetails(cardNumber, expDate, cvv);
-                closeModal();
-            } else {
-                alert('Invalid card details. Please check and try again.');
-            }
-        });
-
-        document.querySelector('.modal .close').addEventListener('click', () => {
-            closeModal();
-        });
-    }
-
-    function closeModal() {
-        const modal = document.querySelector('.modal');
-        modal.classList.remove('open');
-        document.body.removeChild(modal);
-    }
-
-    function validateCardDetails(cardNumber, expDate, cvv) {
-        // Basic validation for demonstration purposes
-        const cardNumberRegex = /^\d{16}$/;
-        const expDateRegex = /^\d{2}\/\d{2}$/;
-        const cvvRegex = /^\d{3}$/;
-
-        return cardNumberRegex.test(cardNumber) && expDateRegex.test(expDate) && cvvRegex.test(cvv);
-    }
-
-    function saveCardDetails(cardNumber, expDate, cvv) {
-        const cardDetails = {
-            cardNumber: cardNumber,
-            expDate: expDate,
-            cvv: cvv
-        };
-
-        fetch('data/cards.txt', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(cardDetails)
-        }).then(response => {
-            if (response.ok) {
-                alert('Card details saved successfully.');
-            } else {
-                console.error('Failed to save card details.');
-            }
-        });
+    function redirectToURL(url) {
+        window.location.href = url;
     }
 });
