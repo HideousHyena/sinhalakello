@@ -25,11 +25,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const replies = [
-        "Hi there! How can I help you?",
-        "I'm not sure I understand. Can you clarify?",
-        "That's interesting. Tell me more!",
-        "Sorry, I don't have an answer to that.",
-        "Let me think about it..."
+        "කොහොමද ඉතිං...",
+        "හායි!",
+        "Hi!",
+        "ඉතිං ඉති​ං",
+        "ම්ම්ම්...",
+        "mmmm...",
+        "එහෙමද?",
+        "ගෙවල් කොහෙද කිව්වෙ?",
+        "මං නං මාතර...",
+        "කම්මැලියි අනේ...",
+        "වහිනවද ඔයාලට?",
     ];
 
     let messageCount = 0;
