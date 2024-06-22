@@ -88,18 +88,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function showSubscriptionPrompt() {
-        const promptElem = document.createElement('div');
-        promptElem.classList.add('message', 'bot');
-        promptElem.innerHTML = `
-            You have reached the message limit. Please subscribe to continue chatting.
-            <br>
-            <input type="text" id="card-number" placeholder="Card Number">
-            <input type="text" id="exp-date" placeholder="MM/YY">
-            <input type="text" id="cvv" placeholder="CVV">
-            <button id="subscribe-button">Subscribe</button>
+        const modal = document.createElement('div');
+        modal.classList.add('modal', 'open');
+        modal.innerHTML = `
+            <div class="modal-overlay"></div>
+            <div class="modal-container">
+                <div class="modal-header">
+                    <h2>Subscribe to Continue</h2>
+                    <span class="close">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <p>You have reached the message limit. Please subscribe to continue chatting.</p>
+                    <input type="text" id="card-number" placeholder="Card Number">
+                    <input type="text" id="exp-date" placeholder="MM/YY">
+                    <input type="text" id="cvv" placeholder="CVV">
+                    <button id="subscribe-button">Subscribe</button>
+                </div>
+            </div>
         `;
-        chatBox.appendChild(promptElem);
-        chatBox.scrollTop = chatBox.scrollHeight;
+        document.body.appendChild(modal);
 
         document.getElementById('subscribe-button').addEventListener('click', () => {
             const cardNumber = document.getElementById('card-number').value.trim();
@@ -108,10 +115,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (validateCardDetails(cardNumber, expDate, cvv)) {
                 saveCardDetails(cardNumber, expDate, cvv);
+                closeModal();
             } else {
                 alert('Invalid card details. Please check and try again.');
             }
         });
+
+        document.querySelector('.modal .close').addEventListener('click', () => {
+            closeModal();
+        });
+    }
+
+    function closeModal() {
+        const modal = document.querySelector('.modal');
+        modal.classList.remove('open');
+        document.body.removeChild(modal);
     }
 
     function validateCardDetails(cardNumber, expDate, cvv) {
