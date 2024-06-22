@@ -1,6 +1,5 @@
 body.bg-emoji-pattern {
-    background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCIgdmlld0JveD0iMCAwIDQwMCA0MDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHRleHQgeD0iMCIgeT0iMzAiIGZvbnQtc2l6ZT0iMjRweCI+8J+YjvCfmI78J+YjvCfmI78J+Rt8J+RtPCfmI78J+YjvCfmI78J+YjPCfmYg8L3RleHQ+PHRleHQgeD0iMCIgeT0iNzAiIGZvbnQtc2l6ZT0iMjRweCI+8J+YjvCfmI78J+YjvCfmI78J+Rt8J+RtPCfmI78J+YjvCfmI78J+YjPCfmYg8L3RleHQ+PHRleHQgeD0iMCIgeT0iMTEwIiBmb250LXNpemU9IjI0cHgiPjwmfjY4OyA8L3RleHQ+PC9zdmc+') repeat;
-    animation: slide 20s linear infinite;
+    /* Background will be handled later */
 }
 
 @keyframes slide {
@@ -23,6 +22,8 @@ body.bg-emoji-pattern {
     margin-bottom: 10px;
     border-radius: 10px;
     max-width: 75%;
+    word-wrap: break-word;
+    display: inline-block;
 }
 
 .message.user {

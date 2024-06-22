@@ -34,7 +34,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let messageCount = 0;
 
-    sendButton.addEventListener('click', () => {
+    sendButton.addEventListener('click', sendMessage);
+    chatInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            sendMessage();
+        }
+    });
+
+    function sendMessage() {
         const userMessage = chatInput.value;
         if (userMessage.trim() === '') return;
 
@@ -50,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 appendMessage(randomReply, 'bot');
             });
         }
-    });
+    }
 
     function appendMessage(message, sender) {
         const messageElem = document.createElement('div');
