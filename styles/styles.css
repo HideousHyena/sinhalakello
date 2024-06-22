@@ -1,3 +1,46 @@
+/* Chat message bubbles */
+.message {
+    max-width: 80%;
+    margin: 10px;
+    padding: 12px;
+    border-radius: 8px;
+}
+
+.user {
+    background-color: #3b82f6;
+    color: white;
+    align-self: flex-end;
+}
+
+.bot {
+    background-color: #f3f4f6;
+    color: #333;
+}
+
+.typing-indicator {
+    display: flex;
+    align-items: center;
+}
+
+.typing-indicator span {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin-right: 3px;
+    background-color: #ccc;
+    border-radius: 50%;
+    animation: typing-bounce 1s infinite ease-in-out;
+}
+
+@keyframes typing-bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
 /* Modal styles */
 .modal {
     display: none;
